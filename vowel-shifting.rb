@@ -1,4 +1,4 @@
-= begin 
+=begin 
 
 You get a "text" and have to shift the vowels by "n" positions to the right.
 (Negative value for n should shift to the left.)
@@ -20,4 +20,10 @@ output = "This as e tist!"
 If text is null or empty return exactly this value.
 Vowels are "a,e,i,o,u". 
 
-= end 
+=end 
+
+def vowel_shift(text,n)
+  return text if text.nil? || text.empty?
+  vowel = text.scan(/[aeiou]/i).rotate(-n) #rotates order of array, negative value rotates it in opposite direction
+  text.gsub(/[aeiou]/i) { vowel.shift } #replaces matched part of string with result of block - first value in vowel array 
+end
